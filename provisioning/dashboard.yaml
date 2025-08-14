@@ -1,0 +1,16 @@
+---
+
+## 🧩 `provisioning/dashboard.yaml`
+
+```yaml
+apiVersion: 1
+
+providers:
+  - name: 'Genlayer Node Dashboard'
+    folder: ''
+    type: file
+    disableDeletion: false
+    editable: true
+    updateIntervalSeconds: 30
+    options:
+      path: /etc/grafana/provisioning/dashboards
