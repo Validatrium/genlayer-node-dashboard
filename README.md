@@ -1,10 +1,9 @@
 # Genlayer Node Dashboard
 
-Dashboard for monitoring Genlayer (Supra Network) nodes using InfluxDB and Prometheus.
+Dashboard for monitoring Genlayer nodes using Prometheus.
 
 ## 📦 Datasources
 
-- InfluxDB (UID: `${{datasource}}`)
 - Prometheus (UID: `${{datasource}}`)
 
 ## 🔧 Variables
@@ -24,7 +23,6 @@ Dashboard for monitoring Genlayer (Supra Network) nodes using InfluxDB and Prome
 ## 🛠 Requirements
 
 - Grafana 12+
-- InfluxDB datasource configured and named in `datasource` variable
 - Prometheus datasource for additional metrics
 
 ### Configuration
