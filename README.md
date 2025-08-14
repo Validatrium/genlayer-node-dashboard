@@ -1,16 +1,17 @@
 # Genlayer Node Dashboard
 
-Dashboard for monitoring Genlayer nodes with metrics from **Prometheus**.
+Dashboard for monitoring Genlayer (Supra Network) nodes using InfluxDB and Prometheus.
 
 ## 📦 Datasources
 
-- Prometheus (UID: `${datasource}`)
+- InfluxDB (UID: `${{datasource}}`)
+- Prometheus (UID: `${{datasource}}`)
 
 ## 🔧 Variables
 
 - `datasource`: selected automatically
 - `host`: node exporter host
-- `node`: node address
+- `node`: validator or node address
 
 ## 📊 Panels
 
@@ -23,7 +24,35 @@ Dashboard for monitoring Genlayer nodes with metrics from **Prometheus**.
 ## 🛠 Requirements
 
 - Grafana 12+
+- InfluxDB datasource configured and named in `datasource` variable
 - Prometheus datasource for additional metrics
+
+### Configuration
+
+To ensure metrics are exposed for Prometheus, the node must have the following configuration in `config.yaml`:
+
+```yaml
+ops:
+  port: 9153
+  endpoints:
+    metrics: true
+    health: true
+
+metrics:
+  interval: "15s"
+  collectors:
+    node:
+      enabled: true
+      interval: "30s"
+    genvm:
+      enabled: true
+      interval: "20s"
+    webdriver:
+      enabled: true
+      interval: "60s"
+```
+
+This enables Prometheus to scrape metrics at `http://<node_ip>:9153/metrics` and is required for dashboard to function properly.
 
 ## 🚀 Import manually
 
@@ -37,3 +66,8 @@ To load automatically via provisioning:
 
 ```yaml
 provisioning/dashboards.yaml
+```
+
+## 🪪 License
+
+MIT License
